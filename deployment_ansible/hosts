@@ -1,0 +1,2 @@
+[redmachine]
+redmachine.redbit.co.ke ansible_connection=ssh ansible_user=root
