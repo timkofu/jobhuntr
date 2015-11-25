@@ -1,6 +1,7 @@
 django==1.8.6
-django-haystack==2.4.1
-git+https://github.com/notanumber/xapian-haystack.git
 uwsgi==2.0.11.2
 scrappy==0.3.0a4
 git+https://github.com/ansible/ansible.git
+git+https://github.com/etianen/django-watson.git
+feedparser==5.2.1
+django-extensions==1.5.9
