@@ -17,3 +17,5 @@ iptables -A INPUT -p tcp --dport 80 -m state --state RELATED,ESTABLISHED -m limi
 
 #iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
 iptables -A INPUT -j DROP
+
+

@@ -4,4 +4,4 @@ scrappy==0.3.0a4
 git+https://github.com/ansible/ansible.git
 git+https://github.com/etianen/django-watson.git
 feedparser==5.2.1
-django-extensions==1.5.9
+django-crispy-forms==1.5.2

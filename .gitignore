@@ -1,2 +1,2 @@
 .idea/
-deployment_ansible/hosts
+ansible/hosts
