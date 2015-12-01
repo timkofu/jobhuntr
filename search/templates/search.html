@@ -1,11 +1,64 @@
 {%  extends "base.html" %}
 
-{%  block body %}
+{% block body %}
+    <p><h2>Jobhuntr</h2></p>
 
-    <form method="post">
+    <p>"Your job search engine"</p>
 
+    <p>
+        <a href="/countries" target="_blank">Countries Indexed</a>
+    </p>
+    <p>
+        <h5>
+            Hint: Use <a href="https://www.youtube.com/watch?v=xsSZps3NH-M" target="_blank">Boolean Operators</a> (*Must be capitals)<br>
+            Example: Manager NOT Finance AND (Japan OR UAE OR Kenya OR Saudi)<br>
+        </h5>
+    </p>
 
+    <form method="get" action=".">
+        <table class="table">
+            <tr>
+                <td>
+                    {{ form.q }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-info" id="sub">Search</button>
+                </td>
+            </tr>
+        </table>
 
+        {% if query %}
+            {% if page.paginator.count > 0 %}
+                <h3>{{ page.object_list|length }} of {{ page.paginator.count }} result{{page.paginator.count|pluralize}} <|> {{ page.number }} of {{ page.paginator.num_pages }} page{{ page.paginator.num_pages|pluralize }}</h3>
+            {% else %}
+                <h3>No results</h3>
+            {% endif %}
+            <h3>{{page.count}}</h3>
+            <table class="table">
+            {% for result in page.object_list %}
+                <tr>
+                    <td><a href="{{ result.object.uri }}">{{ result.object.title }}</a></td>
+                    <td>Age: {{ result.object.add_time|timesince }} </td>
+                    <td>Country: {{ result.object.source_uri.country.name }}</td>
+                </tr>
+            {% comment %}{% empty %}
+                <tr>
+                    <td>No results found.</td>
+                </tr> {% endcomment %}
+            {% endfor %}
+            </table>
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
     </form>
-
 {% endblock %}

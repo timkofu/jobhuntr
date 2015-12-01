@@ -1,0 +1,2 @@
+{{object.title}}
+{{object.source_url.country.name}}

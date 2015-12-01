@@ -1,7 +1,9 @@
-django==1.8.6
+django==1.8.7
 uwsgi==2.0.11.2
-scrappy==0.3.0a4
-git+https://github.com/ansible/ansible.git
-git+https://github.com/etianen/django-watson.git
+scrapy==1.0.3
+#git+https://github.com/ansible/ansible.git
+django-haystack==2.4.1
+Whoosh==2.7.0
 feedparser==5.2.1
-django-crispy-forms==1.5.2
+django-uwsgi-cache==1.0.1
+django-flat-theme==1.1.3

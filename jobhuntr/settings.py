@@ -14,15 +14,21 @@ SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('PRODUCTION'):
     DEBUG = False
+    CACHES = {
+        'default': {
+            'BACKEND': 'uwsgicache.UWSGICache',
+        },
+    }
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jobhuntr.redbit.co.ke']
 
 
 # Application definition
 
 INSTALLED_APPS = (
+    'flat',  # flat-theme
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,12 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'watson',
-    'crispy_forms',
+    'haystack',
 
     'search',
-    'spider',
-    'analytics'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        #'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -107,8 +110,22 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static_global')
+    os.path.join(BASE_DIR, 'static_global'),
 )
 
-# crispy forms
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+ADMINS = (
+    ('Tim', 'makobu.mwambiriro@gmail.com'),
+)
+
+# HayStack
+HAYSTACK_DEFAULT_OPERATOR = 'AND'
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+        'STORAGE': 'file',
+        'POST_LIMIT': 128 * 1024 * 1024,
+        'INCLUDE_SPELLING': True,
+        'BATCH_SIZE': 100,
+    },
+}

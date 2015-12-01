@@ -1,6 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 
-# Create your views here.
+import json
+
+from django.shortcuts import render
+from django.http import JsonResponse
+
+
 def search(request):
-    return HttpResponse('1')
+
+    if request.method == 'GET':
+        return render(request, 'search.html')
+    elif request.method == 'POST':
+        pass

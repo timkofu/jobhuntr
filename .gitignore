@@ -1,2 +1,5 @@
 .idea/
 ansible/hosts
+whoosh_index/
+jobhuntr.sqlite3
+static/
