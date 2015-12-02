@@ -18,6 +18,9 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Countries"
+
 
 class SourceLinks(models.Model):
 
@@ -28,13 +31,19 @@ class SourceLinks(models.Model):
     def __str__(self):
         return self.site_name
 
+    class Meta:
+        verbose_name_plural = "Source Links"
+
 
 class JobsData(models.Model):
 
     source = models.ForeignKey(SourceLinks)
     title = models.CharField(max_length=255)
-    url = models.URLField()
-    added_on = models.DateField(auto_now_add=True)
+    url = models.URLField(unique=True)
+    added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name_plural = "Jobs Data"

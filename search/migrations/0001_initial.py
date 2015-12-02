@@ -25,6 +25,9 @@ class Migration(migrations.Migration):
                 ('a2code', models.CharField(max_length=2)),
                 ('continent', models.ForeignKey(to='search.Continent')),
             ],
+            options={
+                'verbose_name_plural': 'Countries',
+            },
         ),
         migrations.CreateModel(
             name='JobsData',
@@ -32,8 +35,11 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255)),
                 ('url', models.URLField()),
-                ('added_on', models.DateField(auto_now_add=True)),
+                ('added_on', models.DateTimeField(auto_now_add=True)),
             ],
+            options={
+                'verbose_name_plural': 'Jobs Data',
+            },
         ),
         migrations.CreateModel(
             name='SourceLinks',
@@ -43,6 +49,9 @@ class Migration(migrations.Migration):
                 ('url', models.URLField()),
                 ('country', models.ForeignKey(to='search.Country')),
             ],
+            options={
+                'verbose_name_plural': 'Source Links',
+            },
         ),
         migrations.AddField(
             model_name='jobsdata',

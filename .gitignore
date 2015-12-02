@@ -1,5 +1,5 @@
 .idea/
 ansible/hosts
-whoosh_index/
+xapian_index/
 jobhuntr.sqlite3
 static/

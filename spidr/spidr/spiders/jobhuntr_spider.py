@@ -1,10 +1,14 @@
 
 import urlparse
 
-from feedparser import parse as feed_parser
-from scrapy.spider import Spider
+import django
+django.setup()
+
+from scrapy.spiders import Spider
 from search.models import SourceLinks
 from search.models import JobsData
+
+from feedparser import parse as feed_parser
 
 
 class JobhuntrSpider(Spider):
@@ -15,20 +19,15 @@ class JobhuntrSpider(Spider):
     start_urls = (u.url for u in all_urls)
     
     def parse(self, response):
-        
+
         for feed in feed_parser(response.body)['entries']:
 
-            url = feed.get('link')
-            title = feed.get('title')
-            if url:
-                # response.url has the url of the request
-                source_url_object = self.all_urls.get(url=response.url)
-            else:
-                source_url_object = None
+            job_url = feed.get('link')
+            job_title = feed.get('title')
 
-            if url and title and source_url_object:
+            if job_url and job_title:
                 JobsData.objects.get_or_create(
-                    url=url,
-                    title=title,
-                    source_url=source_url_object
+                    url=job_url,
+                    title=job_title,
+                    source=self.all_urls.get(url=response.url)
                 )

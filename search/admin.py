@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from models import (
+    Continent,
+    Country,
+    SourceLinks,
+    JobsData
+)
+
+
+@admin.register(Continent, Country, SourceLinks, JobsData)
+class GenericAdmin(admin.ModelAdmin):
+    pass

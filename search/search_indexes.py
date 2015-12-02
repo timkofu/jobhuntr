@@ -5,10 +5,10 @@ from haystack import indexes
 from .models import JobsData
 
 
-class JobDataIndex(indexes.SearchIndex, indexes.Indexable):
+class JobsDataIndex(indexes.SearchIndex, indexes.Indexable):
 
     text = indexes.CharField(document=True, use_template=True)
-    add_time = indexes.DateTimeField(model_attr='add_time')
+    added_on = indexes.DateTimeField(model_attr='added_on')
     
     def get_model(self):
         return JobsData

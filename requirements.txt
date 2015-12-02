@@ -1,9 +1,7 @@
 django==1.8.7
 uwsgi==2.0.11.2
 scrapy==1.0.3
-#git+https://github.com/ansible/ansible.git
-django-haystack==2.4.1
-Whoosh==2.7.0
+git+https://github.com/notanumber/xapian-haystack.git
 feedparser==5.2.1
 django-uwsgi-cache==1.0.1
 django-flat-theme==1.1.3

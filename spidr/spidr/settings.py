@@ -12,7 +12,7 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.getcwd()))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.getcwd())))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'jobhuntr.settings'
 
 BOT_NAME = 'spidr'
@@ -20,6 +20,7 @@ BOT_NAME = 'spidr'
 SPIDER_MODULES = ['spidr.spiders']
 NEWSPIDER_MODULE = 'spidr.spiders'
 
+DOWNLOAD_HANDLERS = {'s3': None,}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Jobhuntr (+http://jobhuntr.redbit.co.ke)'
