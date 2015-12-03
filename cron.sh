@@ -5,5 +5,5 @@ cd /opt/code/jobhuntr/spidr
 
 /bin/sleep 1
 
-/usr/bin/python /opt/code/jobhuntr/manage.py remove_expired
-/usr/bin/yes | /usr/bin/python /opt/code/jobhuntr/manage.py rebuild_index
+/opt/anaconda2/bin/python /opt/code/jobhuntr/manage.py remove_expired
+/usr/bin/yes | /opt/anaconda2/bin/python /opt/code/jobhuntr/manage.py rebuild_index
