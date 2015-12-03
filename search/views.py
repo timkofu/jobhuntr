@@ -1,13 +1,19 @@
 
-import json
+# #import json
 
-from django.shortcuts import render
-from django.http import JsonResponse
+# #from django.shortcuts import render
+from django.http import HttpResponse
+from django.core import serializers
+from django.views.decorators.cache import cache_page
+
+from .models import Country
 
 
-def search(request):
+@cache_page(3600)
+def countries(request):
+    # __shrug__
 
-    if request.method == 'GET':
-        return render(request, 'search.html')
-    elif request.method == 'POST':
-        pass
+    return HttpResponse(
+        serializers.serialize("xml", Country.objects.only('name', 'a2code')),
+        content_type="application/xml"
+    )

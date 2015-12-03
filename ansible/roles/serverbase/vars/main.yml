@@ -1,4 +1,0 @@
----
-# vars file for serverbase
-
-APT_PACKAGES: "uuid-dev "

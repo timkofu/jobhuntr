@@ -22,6 +22,8 @@ NEWSPIDER_MODULE = 'spidr.spiders'
 
 DOWNLOAD_HANDLERS = {'s3': None,}
 
+LOG_LEVEL = 'ERROR'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'Jobhuntr (+http://jobhuntr.redbit.co.ke)'
 

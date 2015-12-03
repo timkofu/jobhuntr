@@ -1,5 +1,7 @@
 .idea/
-ansible/hosts
 xapian_index/
 jobhuntr.sqlite3
 static/
+ansible/
+jobhuntr/email_setings.py
+*.pyc
