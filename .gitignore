@@ -3,5 +3,5 @@ xapian_index/
 jobhuntr.sqlite3
 static/
 ansible/
-jobhuntr/email_setings.py
+jobhuntr/email_settings.py
 *.pyc
