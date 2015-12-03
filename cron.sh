@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd /opt/code/jobhuntr/spidr
-/usr/local/bin/scrapy crawl jobhuntr
+/opt/anaconda2/bin/scrapy crawl jobhuntr
 
 /bin/sleep 1
 
