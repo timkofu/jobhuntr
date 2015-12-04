@@ -127,3 +127,21 @@ HAYSTACK_CONNECTIONS = {
 
 # Email
 from email_settings import *  # Mandrill
+
+
+# Disable emails on DISALLOWED_HOSTS hit
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'null': {
+            'class': 'logging.NullHandler',
+        },
+    },
+    'loggers': {
+        'django.security.DisallowedHost': {
+            'handlers': ['null'],
+            'propagate': False,
+        },
+    },
+}
