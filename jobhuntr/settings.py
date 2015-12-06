@@ -126,4 +126,4 @@ HAYSTACK_CONNECTIONS = {
 }
 
 # Email
-from email_settings import *  # Mandrill
+from .email_settings import *  # Mandrill

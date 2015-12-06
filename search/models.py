@@ -5,7 +5,7 @@ class Continent(models.Model):
 
     name = models.CharField(max_length=32)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -15,7 +15,7 @@ class Country(models.Model):
     name = models.CharField(max_length=64)
     a2code = models.CharField(max_length=2)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
     class Meta:
@@ -28,7 +28,7 @@ class SourceLinks(models.Model):
     site_name = models.CharField(max_length=128)
     url = models.URLField()  # RSS Jobs Feed
 
-    def __str__(self):
+    def __unicode__(self):
         return self.site_name
 
     class Meta:
@@ -42,7 +42,7 @@ class JobsData(models.Model):
     url = models.URLField(unique=True)
     added_on = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     class Meta:

@@ -1,0 +1,20 @@
+{%  extends "base.html" %}
+
+{%  block content %}
+
+    {% if countries %}
+        <table class="table">
+            <tr>
+                <th>Country</th>
+                <th>ISO A2 Code</th>
+            </tr>
+            {% for c in countries %}
+                <tr>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.a2code }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+{% endblock %}
