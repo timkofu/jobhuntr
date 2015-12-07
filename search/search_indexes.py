@@ -16,4 +16,4 @@ class JobsDataIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         return self.get_model().objects.filter(
             added_on__gte=(datetime.datetime.now() - datetime.timedelta(days=28))
-        ).order_by('-added_on')
+        )
