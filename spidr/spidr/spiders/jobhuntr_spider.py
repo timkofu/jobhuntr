@@ -4,6 +4,8 @@ import urlparse
 import django
 django.setup()
 
+from django.db import transaction
+
 from scrapy.spiders import Spider
 from search.models import SourceLinks
 from search.models import JobsData
@@ -20,14 +22,15 @@ class JobhuntrSpider(Spider):
     
     def parse(self, response):
 
-        for feed in feed_parser(response.body)['entries']:
+        with transaction.atomic():
+            for feed in feed_parser(response.body)['entries']:
 
-            job_url = feed.get('link')
-            job_title = feed.get('title')
+                job_url = feed.get('link')
+                job_title = feed.get('title')
 
-            if job_url and job_title:
-                JobsData.objects.get_or_create(
-                    url=job_url,
-                    title=job_title,
-                    source=self.all_urls.get(url=response.url)
-                )
+                if job_url and job_title:
+                    JobsData.objects.get_or_create(
+                        url=job_url,
+                        title=job_title,
+                        source=self.all_urls.get(url=response.url)
+                    )
