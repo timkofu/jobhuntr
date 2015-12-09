@@ -7,11 +7,10 @@ from search.models import JobsData
 
 
 class Command(BaseCommand):
-    help = "Remove entries older than 28 days"
+    help = "Remove entries older than 365 days"
 
     def handle(self, **options):
         try:
-            JobsData.objects.filter(added_on__lte=datetime.now()-timedelta(days=28))
+            JobsData.objects.filter(added_on__lte=datetime.now()-timedelta(days=365))
         except Exception as e:
             raise CommandError(e.message)
-
