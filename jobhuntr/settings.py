@@ -17,7 +17,7 @@ if os.environ.get('PRODUCTION'):
     DBCONF = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jobhuntr',
-        'USER': os.environ.get('JH_PH_USERNAME'),
+        'USER': os.environ.get('JH_PG_USERNAME'),
         'PASSWORD': os.environ.get('JH_PG_PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '',
