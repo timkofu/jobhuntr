@@ -56,6 +56,7 @@ INSTALLED_APPS = (
 
     'haystack',
     'watson',  # admin full-text-search
+    'daterange_filter',
 
     'search',
 )
