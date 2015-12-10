@@ -14,6 +14,14 @@ SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('PRODUCTION'):
     DEBUG = False
+    DBCONF = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'jobhuntr',
+        'USER': os.environ.get('JH_PH_USERNAME'),
+        'PASSWORD': os.environ.get('JH_PG_PASSWORD'),
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    }
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
@@ -27,6 +35,10 @@ if os.environ.get('PRODUCTION'):
     }
 else:
     DEBUG = True
+    DBCONF = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
+    }
 
 ALLOWED_HOSTS = ['jobhuntr.redbit.co.ke']
 
@@ -89,10 +101,7 @@ WSGI_APPLICATION = 'jobhuntr.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
-    }
+    'default': DBCONF
 }
 
 
