@@ -33,11 +33,19 @@ if os.environ.get('PRODUCTION'):
             },
         },
     }
+    NEEDLE = {
+        'ENGINE': 'xapian_backend.XapianEngine',
+        'PATH': os.path.join(BASE_DIR, 'xapian_index'),
+    }
 else:
     DEBUG = True
     DBCONF = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
+    }
+    NEEDLE = {
+        'ENGINE': 'xapian_backend.XapianEngine',
+        'PATH': os.path.join(BASE_DIR, '.dev_xapian_index'),
     }
 
 ALLOWED_HOSTS = ['jobhuntr.redbit.co.ke']
@@ -136,10 +144,7 @@ ADMINS = (
 
 # HayStack
 HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'xapian_backend.XapianEngine',
-        'PATH': os.path.join(BASE_DIR, 'xapian_index'),
-    },
+    'default': NEEDLE
 }
 
 # Email

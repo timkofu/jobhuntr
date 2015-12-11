@@ -1,5 +1,4 @@
 .idea/
-xapian_index/
 jobhuntr.sqlite3
 static/
 ansible/
