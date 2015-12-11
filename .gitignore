@@ -5,3 +5,4 @@ static/
 ansible/
 jobhuntr/email_settings.py
 *.pyc
+.coverage
