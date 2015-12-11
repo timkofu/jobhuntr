@@ -143,7 +143,10 @@ HAYSTACK_CONNECTIONS = {
 }
 
 # Email
-from .email_settings import *  # Mandrill
+try:
+    from .email_settings import *  # Mandrill
+except ImportError:
+    pass  # so it works on travis-ci
 
 
 # Disable emails on DISALLOWED_HOSTS hit
@@ -162,4 +165,3 @@ LOGGING = {
         },
     },
 }
-
