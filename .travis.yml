@@ -12,7 +12,7 @@ addons:
 install:
   - CXX=g++-4.8 ./.xapian_travis.sh 1.2.21
   - pip install -r requirements.txt
-  - pip install coveralls
+  - pip install coveralls webtest
 script:
   - python manage.py migrate
   - python manage.py test
