@@ -1,5 +1,5 @@
 ![travis](https://travis-ci.org/timkofu/jobhuntr.svg?branch=master)
-![coveralls](https://coveralls.io/repos/timkofu/jobhuntr/badge.svg?branch=master&service=github)
+[![Coverage Status](https://coveralls.io/repos/timkofu/jobhuntr/badge.svg?branch=master&service=github)](https://coveralls.io/github/timkofu/jobhuntr?branch=master)
 ## Jobhuntr
 
 #### Source code for [Jobhuntr](http://jobhuntr.redbit.co.ke/), a jobs search engine.
