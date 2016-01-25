@@ -17,6 +17,7 @@ def countries(request):
     #    content_type="application/xml"
     #)
 
+    # Show contries in which job posts are being indexed
     return render(
         request,
         'countries.html',
