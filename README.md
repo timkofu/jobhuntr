@@ -5,6 +5,3 @@
 #### Source code for Jobhuntr, a jobs search engine.
 
 ![A Django Joint](https://www.djangoproject.com/m/img/badges/djangojoint107x25.gif)
-
-##### Update:
-I needed the VPS for something else, so the app is no longer running live.
