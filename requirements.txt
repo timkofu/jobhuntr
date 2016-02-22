@@ -13,3 +13,4 @@ dj-database-url==0.4.0
 dj-redis-url==0.1.4
 django-watson==1.2.0
 git+https://github.com/gevent/gevent.git
+cython==0.23.4
