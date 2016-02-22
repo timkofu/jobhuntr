@@ -17,7 +17,11 @@ SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('PRODUCTION'):
+    
     DEBUG = False
+
+    SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+
     DBCONF = dj_database_url.parse(os.environ.get("DATABASE_URL"))
 
     # Redis Cache
@@ -55,6 +59,9 @@ if os.environ.get('PRODUCTION'):
     }
     CACHEOPS_DEGRADE_ON_FAILURE = True
 
+    # Django SSLify
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
 else:
     DEBUG = True
@@ -86,7 +93,7 @@ INSTALLED_APPS = (
     'search',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -95,7 +102,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-)
+]
+if not DEBUG:  # # SSLify
+    MIDDLEWARE_CLASSES.insert(0, 'sslify.middleware.SSLifyMiddleware')
 
 ROOT_URLCONF = 'jobhuntr.urls'
 
