@@ -27,6 +27,11 @@ class Blankettests(TestCase):
         call_command('remove_expired', stdout=out)
         self.assertIn("", out.getvalue())
 
+    def test_spider_management_command(self):
+        out = StringIO()
+        call_command('spider', stdout=out)
+        self.assertIn("", out.getvalue())
+
     def test_admin_loads(self):
         self.assertEqual(Client().get('/admin/', follow=True).status_code, 200)
 

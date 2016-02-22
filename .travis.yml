@@ -1,16 +1,7 @@
 language: python
 python:
-  - "2.7"
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - uuid-dev
-    - gcc-4.8
-    - g++-4.8
+  - "3.5"
 install:
-  - CXX=g++-4.8 ./.xapian_travis.sh 1.2.21
   - pip install -r requirements.txt
   - pip install coveralls webtest
 script:

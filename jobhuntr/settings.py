@@ -2,6 +2,10 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+import dj_database_url
+import dj_redis_url
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -14,41 +18,22 @@ SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('PRODUCTION'):
     DEBUG = False
-    DBCONF = {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jobhuntr',
-        'USER': os.environ.get('JH_PG_USERNAME'),
-        'PASSWORD': os.environ.get('JH_PG_PASSWORD'),
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    }
+    DBCONF = dj_database_url.parse(os.environ.get("DATABASE_URL"))
     CACHES = {
-        'default': {
-            'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': '/var/run/redis/redis.sock',
-            'OPTIONS': {
-                'DB': 1,
-                'PARSER_CLASS': 'redis.connection.HiredisParser',
-                'PICKLE_VERSION': 2,
-            },
-        },
+        dj_redis_url.parse(os.environ.get("REDIS_URL")),
     }
-    NEEDLE = {
-        'ENGINE': 'xapian_backend.XapianEngine',
-        'PATH': os.path.join(BASE_DIR, 'xapian_index'),
-    }
+    ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
 else:
     DEBUG = True
     DBCONF = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
     }
-    NEEDLE = {
-        'ENGINE': 'xapian_backend.XapianEngine',
-        'PATH': os.path.join(BASE_DIR, '.dev_xapian_index'),
-    }
 
-ALLOWED_HOSTS = ['jobhuntr.redbit.co.ke']
+# HayStack backend
+NEEDLE = {
+    'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+}
 
 
 # Application definition
@@ -148,10 +133,11 @@ HAYSTACK_CONNECTIONS = {
 }
 
 # Email
-try:
-    from .email_settings import *  # Mandrill
-except ImportError:
-    pass  # so it works on travis-ci
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("MANDRILL_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("MANDRILL_KEY")
 
 
 # Disable emails on DISALLOWED_HOSTS hit

@@ -31,6 +31,7 @@ class JobsDataAdmin(watson.admin.SearchAdmin):
     # #list_display = ('title', 'source')
     list_filter = (
         'source__country',
+        'source__site_name',
         ('added_on', DateRangeFilter),
     )
     search_fields = ('title',)

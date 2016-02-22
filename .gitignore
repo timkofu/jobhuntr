@@ -1,7 +1,4 @@
 .idea/
 jobhuntr.sqlite3
-static/
-ansible/
-jobhuntr/email_settings.py
 *.pyc
 .coverage
