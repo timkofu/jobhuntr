@@ -21,18 +21,20 @@ if os.environ.get('PRODUCTION'):
     DBCONF = dj_database_url.parse(os.environ.get("DATABASE_URL"))
     cache_vars = dj_redis_url.parse(os.environ.get("REDIS_URL"))
     CACHES = {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': '{0}:{1}'.format(cache_vars['HOST'],cache_vars['PORT']),
-        'OPTIONS': {
-            'DB': cache_vars['DB'],
-            'PASSWORD': cache_vars['PASSWORD'],
-            'PARSER_CLASS': 'redis.connection.HiredisParser',
-            'CONNECTION_POOL_CLASS':'redis.BlockingConnectionPool',
-            'CONNECTION_POOL_CLASS_KWARGS': {
-                'max_connections': 19,
-                'timeout': 20,
-            }
-        },
+        'default': {
+            'BACKEND': 'redis_cache.RedisCache',
+            'LOCATION': '{0}:{1}'.format(cache_vars['HOST'],cache_vars['PORT']),
+            'OPTIONS': {
+                'DB': cache_vars['DB'],
+                'PASSWORD': cache_vars['PASSWORD'],
+                'PARSER_CLASS': 'redis.connection.HiredisParser',
+                'CONNECTION_POOL_CLASS':'redis.BlockingConnectionPool',
+                'CONNECTION_POOL_CLASS_KWARGS': {
+                    'max_connections': 19,
+                    'timeout': 20,
+                }
+            },
+        }
     }
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
 else:
