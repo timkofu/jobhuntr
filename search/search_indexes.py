@@ -14,7 +14,7 @@ class JobsDataIndex(indexes.SearchIndex, indexes.Indexable):
         return JobsData
     
     def index_queryset(self, using=None):
-        # Index jobs no older than 28 days
+        # Index jobs no older than x days
         return self.get_model().objects.filter(
-            added_on__gte=(datetime.datetime.now() - datetime.timedelta(days=28))
+            added_on__gte=(datetime.datetime.now() - datetime.timedelta(days=21))
         )

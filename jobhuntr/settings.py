@@ -62,7 +62,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'haystack',
-    'watson',  # admin full-text-search
     'daterange_filter',
 
     'search',

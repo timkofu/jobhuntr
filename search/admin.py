@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-import watson
 from daterange_filter.filter import DateRangeFilter
 
 from .models import (
@@ -27,7 +26,7 @@ class SourceLinksAdmin(admin.ModelAdmin):
 
 
 @admin.register(JobsData)
-class JobsDataAdmin(watson.admin.SearchAdmin):
+class JobsDataAdmin(admin.ModelAdmin):
     # #list_display = ('title', 'source')
     list_filter = (
         'source__country',
