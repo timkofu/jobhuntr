@@ -19,6 +19,8 @@ SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 if os.environ.get('PRODUCTION'):
     DEBUG = False
     DBCONF = dj_database_url.parse(os.environ.get("DATABASE_URL"))
+
+    # Redis Cache
     cache_vars = dj_redis_url.parse(os.environ.get("REDIS_URL"))
     CACHES = {
         'default': {
@@ -36,6 +38,23 @@ if os.environ.get('PRODUCTION'):
             },
         }
     }
+
+    # CacheOps
+    CACHEOPS_REDIS = {
+        'host': cache_vars['HOST'],
+        'port': cache_vars['PORT'],
+        'db': cache_vars['DB'],
+        'password': cache_vars['PASSWORD'],
+        'socket_timeout': 20,
+    }
+    CACHEOPS = {
+        'auth.user': {'ops': 'get', 'timeout': 60*15},
+        'auth.*': {'ops': ('fetch', 'get'), 'timeout': 60*60},
+        'auth.permission': {'ops': 'all', 'timeout': 60*60},
+        '*.*': {'timeout': 60*60},
+    }
+    CACHEOPS_DEGRADE_ON_FAILURE = True
+
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
 else:
     DEBUG = True
