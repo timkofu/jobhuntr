@@ -21,7 +21,8 @@
                 {% block content %}{% endblock %}
             </div>
 
-            <script src="{%  static "js/google_analytics.js" %}"></script>
+            {% load global_settings %}
+            {%  setting "GOOGLE_ANALYTICS_CODE" %}
 
         </body>
     </html>

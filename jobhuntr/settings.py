@@ -13,7 +13,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('PRODUCTION'):
@@ -63,12 +62,20 @@ if os.environ.get('PRODUCTION'):
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
+
+    GOOGLE_ANALYTICS_CODE = os.environ.get("GOOGLE_ANALYTICS_CODE")
+
 else:
+
     DEBUG = True
+
     DBCONF = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
     }
+
+    SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
+
 
 # HayStack backend
 NEEDLE = {
