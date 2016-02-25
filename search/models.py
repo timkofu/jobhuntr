@@ -39,7 +39,7 @@ class JobsData(models.Model):
 
     source = models.ForeignKey(SourceLinks)
     title = models.CharField(max_length=255)
-    url = models.URLField()  # # Job URL
+    url = models.URLField(unique=True)  # # Job URL
     added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

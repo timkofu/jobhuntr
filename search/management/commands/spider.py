@@ -9,6 +9,7 @@ import feedparser
 
 from django.db import transaction
 from django.core.management.base import BaseCommand, CommandError
+from django.db.utils import IntegrityError
 
 from search.models import (
     SourceLinks,
@@ -35,11 +36,14 @@ class Command(BaseCommand):
                     job_title = feed.get('title')
 
                     if job_url and job_title:
-                        JobsData.objects.get_or_create(
-                            url=job_url,
-                            title=job_title,
-                            source=job_source
-                        )
+                        try:
+                            JobsData.objects.get_or_create(
+                                url=job_url,
+                                title=job_title,
+                                source=job_source
+                            )
+                        except IntegrityError:
+                            pass
 
         if job_sources:
             try:
