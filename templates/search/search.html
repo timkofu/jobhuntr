@@ -35,7 +35,7 @@
         {% endif %}
         <h3>{{page.count}}</h3>
         <table class="table">
-        {% for result in page.object_list %}
+        {% for result in page.object_list reversed %}
             <tr>
                 <td><a href="{{ result.object.url }}">{{ result.object.title }}</a></td>
                 <td>Age: {{ result.object.added_on|timesince }} </td>
