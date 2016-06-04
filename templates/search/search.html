@@ -37,11 +37,19 @@
 
     {% if query %}
         {% if page.paginator.count > 0 %}
-            <h4>{{ page.object_list|length }} of {{ page.paginator.count }} result{{page.paginator.count|pluralize}} <|> {{ page.number }} of {{ page.paginator.num_pages }} page{{ page.paginator.num_pages|pluralize }}</h4>
+            <h4>Page {{ page.number }} of {{ page.paginator.num_pages }} page{{ page.paginator.num_pages|pluralize }} ({{ page.paginator.count }} result{{page.paginator.count|pluralize}})</h4>
         {% else %}
             <h3>No results</h3>
         {% endif %}
         <h3>{{page.count}}</h3>
+        {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+        {% endif %}
+        <br>
         <table class="table">
         {% for result in page.object_list reversed %}
             <tr>
@@ -63,8 +71,9 @@
                 {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
             </div>
         {% endif %}
-    {% else %}
-        {# Show some example queries to run, maybe query syntax, something else? #}
+
     {% endif %}
+
+    <br>
 
 {% endblock %}
