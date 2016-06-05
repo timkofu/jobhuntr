@@ -105,7 +105,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'haystack',
-    'elasticsearch',
     'daterange_filter',
 
     'search',
