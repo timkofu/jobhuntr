@@ -71,12 +71,6 @@ if os.environ.get('PRODUCTION'):
         'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
         'INDEX_NAME': 'documents',
     }
-    if elastic_search_vars.username:
-        NEEDLE['KWARGS'] = {
-            "http_auth": elastic_search_vars.username\
-             + ':' + elastic_search_vars.password
-        }
-
 
 else:
 
@@ -189,6 +183,12 @@ STATICFILES_DIRS = (
 HAYSTACK_CONNECTIONS = {
     'default': NEEDLE
 }
+if not DEBUG:
+    if elastic_search_vars.username:
+        HAYSTACK_CONNECTIONS["default"]['KWARGS'] = {
+            "http_auth": elastic_search_vars.username\
+             + ':' + elastic_search_vars.password
+        }
 
 # Email
 #EMAIL_USE_TLS = True
