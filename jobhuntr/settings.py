@@ -181,9 +181,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static_global'),
 )
 
-ADMINS = (
-    ('Tim', 'makobu.mwambiriro@gmail.com'),
-)
+#ADMINS = (
+#    ('Tim', 'makobu.mwambiriro@gmail.com'),
+#)
 
 # HayStack
 HAYSTACK_CONNECTIONS = {
