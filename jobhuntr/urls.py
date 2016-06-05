@@ -13,7 +13,8 @@ urlpatterns = [
     # #url(r'.*', 'search.views.search', name='search'),
     url(r'^countries/$', countries, name='countries'),
     url(r'.*', SearchView(
-            searchqueryset=SearchQuerySet().auto_query().order_by('-added_on')
+            #searchqueryset=SearchQuerySet().auto_query().order_by('-added_on')
+            searchqueryset=SearchQuerySet().order_by('-added_on')
         )
     ),
 ]
