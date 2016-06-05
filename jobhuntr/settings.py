@@ -68,7 +68,7 @@ if os.environ.get('PRODUCTION'):
     elastic_search_vars = urlparse(os.environ.get('SEARCHBOX_URL'))
     NEEDLE = {
         'ENGINE': 'haystack.backends.simple_backend.ElasticSearchEngine',
-        'URL': es.scheme + '://' + es.hostname + ':' + "80",
+        'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
         'INDEX_NAME': 'documents',
     }
     if elastic_search_vars.username:
