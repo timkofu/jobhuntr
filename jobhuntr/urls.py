@@ -3,6 +3,7 @@ from django.contrib import admin
 
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
+from haystack.inputs import AutoQuery
 
 from search.views import countries
 
@@ -12,6 +13,8 @@ urlpatterns = [
     # #url(r'.*', 'search.views.search', name='search'),
     url(r'^countries/$', countries, name='countries'),
     url(r'.*', SearchView(
-            searchqueryset=SearchQuerySet().order_by('-added_on')
+            searchqueryset=SearchQuerySet().filter(
+                content=AutoQuery(request.get["q"])
+            ).order_by('-added_on')
         )),
 ]
