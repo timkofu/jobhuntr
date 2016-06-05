@@ -1,6 +1,7 @@
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import urlparse
 
 import dj_database_url
 import dj_redis_url
@@ -60,27 +61,37 @@ if os.environ.get('PRODUCTION'):
 
     # Django SSLify
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
-
     GOOGLE_ANALYTICS_CODE = os.environ.get("GOOGLE_ANALYTICS_CODE")
+
+    # Elastic Search
+    elastic_search_vars = urlparse(os.environ.get('SEARCHBOX_URL'))
+    NEEDLE = {
+        'ENGINE': 'haystack.backends.simple_backend.ElasticSearchEngine',
+        'URL': es.scheme + '://' + es.hostname + ':' + "80",
+        'INDEX_NAME': 'documents',
+    }
+    if elastic_search_vars.username:
+        NEEDLE['KWARGS'] = {
+            "http_auth": elastic_search_vars.username\
+             + ':' + elastic_search_vars.password
+        }
+
 
 else:
 
     DEBUG = True
-
     DBCONF = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
     }
-
     SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
 
-# HayStack backend
-NEEDLE = {
-    'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-}
+    # Haystack Database backend
+    NEEDLE = {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    }
 
 
 # Application definition
@@ -180,11 +191,11 @@ HAYSTACK_CONNECTIONS = {
 }
 
 # Email
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mandrillapp.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get("MANDRILL_USERNAME")
-EMAIL_HOST_PASSWORD = os.environ.get("MANDRILL_KEY")
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.mandrillapp.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = os.environ.get("MANDRILL_USERNAME")
+#EMAIL_HOST_PASSWORD = os.environ.get("MANDRILL_KEY")
 
 
 # Disable emails on DISALLOWED_HOSTS hit
