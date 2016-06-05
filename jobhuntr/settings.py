@@ -1,7 +1,7 @@
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import urlparse
+from urllib.parse import urlparse
 
 import dj_database_url
 import dj_redis_url
