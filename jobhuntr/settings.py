@@ -199,18 +199,18 @@ HAYSTACK_CONNECTIONS = {
 
 
 # Disable emails on DISALLOWED_HOSTS hit
-#LOGGING = {
-#    'version': 1,
-#    'disable_existing_loggers': False,
-#    'handlers': {
-#        'null': {
-#            'class': 'logging.NullHandler',
-#        },
-#    },
-#    'loggers': {
-#        'django.security.DisallowedHost': {
-#            'handlers': ['null'],
-#            'propagate': False,
-#        },
-#    },
-#}
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'null': {
+            'class': 'logging.NullHandler',
+        },
+    },
+    'loggers': {
+        'django.security.DisallowedHost': {
+            'handlers': ['null'],
+            'propagate': False,
+        },
+    },
+}
