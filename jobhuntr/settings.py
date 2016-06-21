@@ -196,7 +196,7 @@ if not DEBUG and "elastic_search_vars" in locals():
             "http_auth": elastic_search_vars.username\
              + ':' + elastic_search_vars.password
         }
-
+#.
 # Email
 #EMAIL_USE_TLS = True
 #EMAIL_HOST = 'smtp.mandrillapp.com'
