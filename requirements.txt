@@ -15,6 +15,3 @@ gevent==1.1.1
 django-cacheops==2.4.4
 django-sslify==0.2.7
 newrelic
-cffi==1.7.0
-algoliasearch==1.9.0
-git+https://github.com/timkofu/django-haystack-algolia.git

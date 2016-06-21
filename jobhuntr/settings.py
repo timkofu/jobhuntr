@@ -71,12 +71,9 @@ if os.environ.get('PRODUCTION'):
     #    'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
     #    'INDEX_NAME': 'documents',
     #}
+
     NEEDLE = {
-        'ENGINE': 'haystack_algolia.algolia_backend.AlgoliaEngine',
-        'APP_ID': os.environ.get("ALGOLIASEARCH_APPLICATION_ID"),
-        'API_KEY': os.environ.get("ALGOLIASEARCH_API_KEY"),
-        'INDEX_NAME_PREFIX': 'jobhuntr-',
-        'TIMEOUT': 60 * 5
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     }
 
 else:
