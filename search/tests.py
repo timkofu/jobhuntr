@@ -35,6 +35,7 @@ class Blankettests(TestCase):
     def test_admin_loads(self):
         self.assertEqual(Client().get('/admin/', follow=True).status_code, 200)
 
-    def test_wsgi_loads(self):
-        app = TestApp(application)
-        self.assertEqual(app.get('/').status_int, 200)
+    #def test_wsgi_loads(self):
+    #    app = TestApp(application)
+    #    self.assertEqual(app.get('/').status_int, 200)
+    # ASGI now
