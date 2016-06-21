@@ -1,5 +1,4 @@
 django==1.9.7
-uwsgi==2.0.13.1
 feedparser==5.2.1
 hiredis==0.2.0
 django-redis-cache==1.6.5
@@ -13,7 +12,7 @@ whitenoise==3.2
 dj-database-url==0.4.1
 dj-redis-url==0.1.4
 gevent==1.1.1
-django-cacheops==2.4.4
+django-cacheops==2.4.5
 django-sslify==0.2.7
 cffi==1.6.0
 brotlipy==0.3.0
