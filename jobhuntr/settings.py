@@ -65,11 +65,18 @@ if os.environ.get('PRODUCTION'):
     GOOGLE_ANALYTICS_CODE = os.environ.get("GOOGLE_ANALYTICS_CODE")
 
     # Elastic Search
-    elastic_search_vars = urlparse(os.environ.get('BONSAI_URL'))
+    #elastic_search_vars = urlparse(os.environ.get('BONSAI_URL'))
+    #NEEDLE = {
+    #    'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+    #    'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
+    #    'INDEX_NAME': 'documents',
+    #}
     NEEDLE = {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
-        'INDEX_NAME': 'documents',
+        'ENGINE': 'haystack_algolia.algolia_backend.AlgoliaEngine',
+        'APP_ID': os.environ.get("ALGOLIASEARCH_APPLICATION_ID"),
+        'API_KEY': os.environ.get("ALGOLIASEARCH_API_KEY"),
+        'INDEX_NAME_PREFIX': 'jobhuntr-',
+        'TIMEOUT': 60 * 5
     }
 
 else:
