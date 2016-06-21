@@ -15,4 +15,6 @@ gevent==1.1.1
 django-cacheops==2.4.4
 django-sslify==0.2.7
 newrelic
+cffi
+algoliasearch
 git+https://github.com/matagus/django-haystack-algolia.git
