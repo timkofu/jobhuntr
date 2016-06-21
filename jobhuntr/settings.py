@@ -106,6 +106,7 @@ INSTALLED_APPS = (
 
     'haystack',
     'daterange_filter',
+    'channels',
 
     'search',
 )
