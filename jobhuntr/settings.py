@@ -190,7 +190,7 @@ STATICFILES_DIRS = (
 HAYSTACK_CONNECTIONS = {
     'default': NEEDLE
 }
-if not DEBUG and elastic_search_vars:
+if not DEBUG and "elastic_search_vars" in locals():
     if elastic_search_vars.username:
         HAYSTACK_CONNECTIONS["default"]['KWARGS'] = {
             "http_auth": elastic_search_vars.username\
