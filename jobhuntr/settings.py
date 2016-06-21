@@ -84,6 +84,7 @@ else:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
     }
+    DBCONF['TEST'] = {'NAME': os.path.join(BASE_DIR, 'jobhuntr-test.sqlite3')}
     ANALYTICS_DB = DBCONF
     SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
@@ -157,7 +158,7 @@ WSGI_APPLICATION = 'jobhuntr.wsgi.application'
 
 DATABASES = {
     'default': DBCONF,
-    'analytics': ANALYTICS_DB
+    'analytics': ANALYTICS_DB,
 }
 
 
