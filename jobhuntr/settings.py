@@ -23,9 +23,10 @@ if os.environ.get('PRODUCTION'):
     SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
     DBCONF = dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    ANALYTICS_DB = dj_database_url.parse(os.environ.get("JAWSDB_MARIA_URL"))
 
     # Redis Cache
-    cache_vars = dj_redis_url.parse(os.environ.get("REDIS_URL"))
+    cache_vars = dj_redis_url.parse(os.environ.get("REDISCLOUD_URL"))
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
@@ -83,6 +84,7 @@ else:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'jobhuntr.sqlite3'),
     }
+    ANALYTICS_DB = DBCONF
     SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
 
@@ -152,7 +154,8 @@ WSGI_APPLICATION = 'jobhuntr.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': DBCONF
+    'default': DBCONF,
+    'analytics': ANALYTICS_DB
 }
 
 
@@ -178,10 +181,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static_global'),
 )
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-#ADMINS = (
-#    ('Tim', 'makobu.mwambiriro@gmail.com'),
-#)
+ADMINS = (
+    ('Tim', 'makobu.mwambiriro@gmail.com'),
+)
 
 # HayStack
 HAYSTACK_CONNECTIONS = {
@@ -193,13 +197,13 @@ if not DEBUG and "elastic_search_vars" in locals():
             "http_auth": elastic_search_vars.username\
              + ':' + elastic_search_vars.password
         }
-#.
+
 # Email
-#EMAIL_USE_TLS = True
-#EMAIL_HOST = 'smtp.mandrillapp.com'
-#EMAIL_PORT = 587
-#EMAIL_HOST_USER = os.environ.get("MANDRILL_USERNAME")
-#EMAIL_HOST_PASSWORD = os.environ.get("MANDRILL_KEY")
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get("GMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("GMAIL_PASS")
 
 
 # Disable emails on DISALLOWED_HOSTS hit
@@ -218,3 +222,17 @@ LOGGING = {
         },
     },
 }
+
+# Django Channels
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "jobhuntr.routing.channel_routing",
+    },
+}
+
+# My Settings
+MAX_JOB_AGE = 14
