@@ -64,18 +64,6 @@ if os.environ.get('PRODUCTION'):
     ALLOWED_HOSTS = ['jobhunt-r.herokuapp.com']
     GOOGLE_ANALYTICS_CODE = os.environ.get("GOOGLE_ANALYTICS_CODE")
 
-    # Elastic Search
-    #elastic_search_vars = urlparse(os.environ.get('BONSAI_URL'))
-    #NEEDLE = {
-    #    'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-    #    'URL': elastic_search_vars.scheme + '://' + elastic_search_vars.hostname + ':' + "80",
-    #    'INDEX_NAME': 'documents',
-    #}
-
-    NEEDLE = {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    }
-
 else:
 
     DEBUG = True
@@ -87,10 +75,10 @@ else:
     SECRET_KEY = 'z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n'
 
 
-    # Haystack Database backend
-    NEEDLE = {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    }
+# Haystack Database backend
+NEEDLE = {
+    'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+}
 
 
 # Application definition
