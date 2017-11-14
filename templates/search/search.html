@@ -1,0 +1,83 @@
+{%  extends "base.html" %}
+
+{% block content %}
+
+    <a href="https://github.com/timkofu" target="_blank">
+        <img style="position: absolute; top: 0; right: 0; border: 0;"
+        src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+        alt="Fork me on GitHub"
+        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+    </a>
+
+    <p><h2>JOBHUNTR</h2></p>
+
+    <p><b>"Get a job."</b></p>
+
+    <p id="links">
+        <a href="{%  url "countries" %}" target="_blank">Countries Indexed</a>
+    </p>
+
+    {% comment %}
+    <p>
+
+            <strike>Hint: Use <a href="https://www.youtube.com/watch?v=xsSZps3NH-M" target="_blank">Boolean Operators</a> (*Must be capitals)<br>
+                Example: Manager NOT Finance AND (KE OR United Nations OR UAE OR United States OR HK)<br></strike>
+            (Needs a better search backend for boolean search to work)<br>
+
+    </p>
+    {% endcomment %}
+    
+
+    <form method="get">
+
+        <div class="form-group">
+            <input type="search" name="q" id="id_q" class="form-control" value="{{ query }}">
+        </div>
+        <button type="submit" class="btn btn-success">SEARCH</button>
+
+    </form>
+
+    <hr>
+
+    {% if query %}
+        {% if page.paginator.count > 0 %}
+            <h4>Page {{ page.number }} of {{ page.paginator.num_pages }} page{{ page.paginator.num_pages|pluralize }} ({{ page.paginator.count }} result{{page.paginator.count|pluralize}})</h4>
+        {% else %}
+            <h3>No results</h3>
+        {% endif %}
+        <h3>{{page.count}}</h3>
+        {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+        {% endif %}
+        <br>
+        <table class="table">
+        {% for result in page.object_list reversed %}
+            <tr>
+                <td><a href="{{ result.object.url }}">{{ result.object.title }}</a></td>
+                <td>Age: {{ result.object.added_on|timesince }} </td>
+                <td>Country: {{ result.object.source.country.name }}</td>
+            </tr>
+        {% comment %}{% empty %}
+            <tr>
+                <td>No results found.</td>
+            </tr> {% endcomment %}
+        {% endfor %}
+        </table>
+
+        {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+    <br>
+
+{% endblock %}

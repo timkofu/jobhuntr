@@ -1,0 +1,4 @@
+{{object.title}}
+{{object.source.country.name}}
+{{object.source.country.a2code}}
+{{object.source.country.continent.name}}
