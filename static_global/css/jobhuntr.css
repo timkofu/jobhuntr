@@ -1,0 +1,13 @@
+#links > a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom: solid #439A46 4px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+#links {
+    margin-bottom: 40px;
+}

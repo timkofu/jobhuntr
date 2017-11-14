@@ -1,0 +1,7 @@
+{
+  "name": "Jobhuntr",
+  "description": "A job search engine",
+  "repository": "https://github.com/timkofu/jobhuntr",
+  "logo": "https://www.djangoproject.com/s/img/logos/django-logo-negative.png",
+  "keywords": ["python", "django", "searche ngine"]
+}
