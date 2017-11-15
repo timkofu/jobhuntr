@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if os.environ.get("PRODUCTION"):
     DEBUG = False
     ALLOWED_HOSTS = [
-        "jobhunt-r.herokuapp.com",
+        f"{os.getenv('APP_NAME')}.herokuapp.com", # Name of your app
     ]
     SECRET_KEY = os.getenv("SECRET_KEY")
     DB = dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=600)
@@ -92,11 +92,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': DB or {
+    'default': DB or ({
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'jobhuntr',
         'USER': 'jobhuntr',
-    }
+    } if not os.getenv('TRAVIS') else { # check whether we are in Travis CI
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    })
 }
 
 
