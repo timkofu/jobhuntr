@@ -98,7 +98,7 @@ DATABASES = {
         'USER': 'jobhuntr',
     } if not os.getenv('TRAVIS') else { # check whether we are in Travis CI
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'NAME': 'test.db',
     })
 }
 
