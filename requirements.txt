@@ -3,6 +3,7 @@ asgiref==1.1.2
 attrs==17.3.0
 autobahn==17.10.1
 Automat==0.6.0
+beautifulsoup4==4.6.0
 brotlipy==0.7.0
 cffi==1.11.2
 channels==1.1.8
@@ -25,5 +26,8 @@ redis==2.10.6
 six==1.11.0
 Twisted==17.9.0
 txaio==2.8.2
+waitress==1.1.0
+WebOb==1.7.3
+WebTest==2.0.29
 whitenoise==3.3.1
 zope.interface==4.4.3

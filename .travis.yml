@@ -6,6 +6,6 @@ install:
   - pip install coveralls webtest
 script:
   - python manage.py migrate
-  - python manage.py test
+  - yes | python manage.py test
   - coverage run --source="." manage.py test
 after_success: coveralls
