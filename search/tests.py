@@ -5,7 +5,7 @@ from jobhuntr.wsgi import application
 from django.test import TestCase
 from django.test import Client
 from django.utils.six import StringIO
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core.management import call_command
 from django.test.utils import setup_test_environment
 #setup_test_environment()
