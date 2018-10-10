@@ -23,6 +23,7 @@ else:
 
 
 INSTALLED_APPS = (
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,24 +33,20 @@ INSTALLED_APPS = (
 
     'haystack',
     'daterange_filter',
-    'channels',
 
     'search',
 )
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-if not DEBUG:  # # SSLify
-    MIDDLEWARE_CLASSES.insert(0, 'sslify.middleware.SSLifyMiddleware')
 
 ROOT_URLCONF = 'jobhuntr.urls'
 
@@ -70,7 +67,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'jobhuntr.wsgi.application'
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

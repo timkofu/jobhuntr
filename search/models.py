@@ -11,7 +11,7 @@ class Continent(models.Model):
 
 class Country(models.Model):
 
-    continent = models.ForeignKey(Continent)
+    continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     a2code = models.CharField(max_length=2)
 
@@ -24,7 +24,7 @@ class Country(models.Model):
 
 class SourceLinks(models.Model):
 
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     site_name = models.CharField(max_length=128)
     url = models.URLField()  # RSS/Atom Feed
 
@@ -37,7 +37,7 @@ class SourceLinks(models.Model):
 
 class JobsData(models.Model):
 
-    source = models.ForeignKey(SourceLinks)
+    source = models.ForeignKey(SourceLinks, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     url = models.URLField(unique=True)  # # Job URL
     added_on = models.DateTimeField(auto_now_add=True)
