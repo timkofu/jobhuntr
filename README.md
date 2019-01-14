@@ -1,4 +1,4 @@
-![travis](https://travis-ci.org/timkofu/jobhuntr.svg?branch=master)
+[![Build Status](https://travis-ci.org/timkofu/jobhuntr.svg?branch=master)](https://travis-ci.org/timkofu/jobhuntr)
 [![Coverage Status](https://coveralls.io/repos/timkofu/jobhuntr/badge.svg?branch=master&service=github)](https://coveralls.io/github/timkofu/jobhuntr?branch=master)
 ## Jobhuntr
 
