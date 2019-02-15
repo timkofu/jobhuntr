@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==2.1.5"
+django = "==2.1.7"
 astroid = "==2.0.4"
 beautifulsoup4 = "==4.6.3"
 brotlipy = "==0.7.0"
