@@ -1,4 +1,5 @@
-.idea/
-jobhuntr.sqlite3
+.idea
+.vscode
 *.pyc
 .coverage
+*.db
