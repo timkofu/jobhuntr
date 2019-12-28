@@ -1,5 +1,5 @@
 -i https://pypi.org/simple/
-beautifulsoup4==4.8.1
+beautifulsoup4==4.8.2
 brotlipy==0.7.0
 bs4==0.0.1
 cffi==1.13.2
@@ -20,7 +20,7 @@ six==1.13.0
 soupsieve==1.9.5
 sqlparse==0.3.0
 uwsgi==2.0.18
-waitress==1.4.0
+waitress==1.4.1
 webob==1.8.5
 webtest==2.0.33
 whitenoise==4.1.3
