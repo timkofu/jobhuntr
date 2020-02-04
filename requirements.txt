@@ -1,4 +1,4 @@
--i https://pypi.org/simple
+-i https://pypi.org/simple/
 asgiref==3.2.3
 beautifulsoup4==4.8.2
 brotlipy==0.7.0
@@ -16,12 +16,12 @@ msgpack-python==0.5.6
 psycopg2-binary==2.8.4
 pycparser==2.19
 pytz==2019.3
-redis==3.3.11
+redis==3.4.1
 six==1.14.0
 soupsieve==1.9.5
 sqlparse==0.3.0
 uwsgi==2.0.18
-waitress==1.4.2
-webob==1.8.5
+waitress==1.4.3
+webob==1.8.6
 webtest==2.0.33
 whitenoise==5.0.1
