@@ -12,7 +12,7 @@ feedparser==5.2.1
 hiredis==1.0.1
 lxml==4.5.0
 msgpack-python==0.5.6
-psycopg2-binary==2.8.4
+psycopg2-binary==2.8.5
 pycparser==2.20
 pytz==2020.1
 redis==3.5.3
