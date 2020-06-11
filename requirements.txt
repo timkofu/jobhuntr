@@ -23,4 +23,4 @@ uwsgi==2.0.18
 waitress==1.4.4
 webob==1.8.6
 webtest==2.0.34
-whitenoise==5.0.1
+whitenoise==5.1.0
