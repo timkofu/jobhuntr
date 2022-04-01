@@ -39,7 +39,6 @@ INSTALLED_APPS = (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,7 +130,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False # using naive datetimes
+USE_TZ = True
 
 
 STATIC_URL = '/static/'
@@ -139,8 +138,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static_global'),
 )
-if not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ADMINS = (
     ('Tim', 'makobu.mwambiriro@gmail.com'),
