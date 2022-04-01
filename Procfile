@@ -1,1 +1,1 @@
-uwsgi uwsgi.ini --enable-threads --single-interpreter
+uwsgi uwsgi.ini --enable-threads --single-interpreter --static-map /static=static
