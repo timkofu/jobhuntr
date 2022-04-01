@@ -72,7 +72,7 @@ jobs:
               run: |
                   python manage.py migrate > /dev/null
                   python manage.py test
-                  overage run --source="." manage.py test
+                  coverage run --source="." manage.py test
                   coveralls
               env:
                   DATABASE_URL: postgres://jobhuntr:jobhuntr@localhost:5432/jobhuntr
