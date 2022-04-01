@@ -67,14 +67,13 @@ jobs:
                   python -m pip install -U pip > /dev/null
                   pip install -r dev_requirements.txt > /dev/null
                   pip install coveralls
-                  coverage run --source="." manage.py test
-                  coveralls
 
             - name: Run Tests
               run: |
-                  cd jobhuntr 
                   python manage.py migrate > /dev/null
                   python manage.py test
+                  overage run --source="." manage.py test
+                  coveralls
               env:
                   DATABASE_URL: postgres://jobhuntr:jobhuntr@localhost:5432/jobhuntr
                   REDIS_URL: redis://localhost:6379/0
