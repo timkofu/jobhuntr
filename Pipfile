@@ -19,7 +19,6 @@ django-redis = "*"
 feedparser = "*"
 hiredis = "*"
 msgpack-python = "*"
-whitenoise = "*"
 webtest = "*"
 
 [requires]
