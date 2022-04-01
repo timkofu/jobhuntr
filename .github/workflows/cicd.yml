@@ -77,4 +77,3 @@ jobs:
               env:
                   DATABASE_URL: postgres://jobhuntr:jobhuntr@localhost:5432/jobhuntr
                   REDIS_URL: redis://localhost:6379/0
-

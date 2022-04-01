@@ -12,11 +12,9 @@ if os.environ.get("PRODUCTION"):
         f"{os.getenv('APP_NAME')}.herokuapp.com",  # Name of your app
     ]
     SECRET_KEY = os.getenv("SECRET_KEY")
-    DB = dj_database_url.parse(os.getenv("DATABASE_URL"), conn_max_age=600)
 else:
     DEBUG = True
     SECRET_KEY = "z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n"
-    DB = None
 
 
 INSTALLED_APPS = (
@@ -77,12 +75,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 DATABASES = {
-    "default": DB
-    or {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "jobhuntr",
-        "USER": "jobhuntr",
-    }
+    "default": dj_database_url.parse(os.getenv("DATABASE_URL"), conn_max_age=600)
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
