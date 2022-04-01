@@ -1,5 +1,6 @@
-.idea
 .vscode
 *.pyc
 .coverage
 *.db
+poetry.lock
+.venv

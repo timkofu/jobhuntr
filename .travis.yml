@@ -5,8 +5,8 @@ python:
 services:
   - redis-server
 install:
-  - pip install -r requirements.txt
-  - pip install coveralls webtest
+  - pip install -r dev_requirements.txt
+  - pip install coveralls
 script:
   - python manage.py migrate
   - yes | python manage.py test

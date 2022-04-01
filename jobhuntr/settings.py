@@ -32,7 +32,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'haystack',
-    'daterange_filter',
 
     'search',
 )
@@ -83,9 +82,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
 DATABASES = {
     'default': DB or ({
         'ENGINE': 'django.db.backends.postgresql',
@@ -96,6 +92,8 @@ DATABASES = {
         'NAME': 'test.db',
     })
 }
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Log me out after 15 minutes of inactivity

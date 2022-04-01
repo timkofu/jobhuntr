@@ -1,14 +1,15 @@
+from io import StringIO
+
 from webtest import TestApp
 
 from jobhuntr.wsgi import application
 
 from django.test import TestCase
 from django.test import Client
-from django.utils.six import StringIO
 from django.urls import reverse
 from django.core.management import call_command
-from django.test.utils import setup_test_environment
-#setup_test_environment()
+# from django.test.utils import setup_test_environment
+# setup_test_environment()
 
 
 class Blankettests(TestCase):
@@ -35,7 +36,3 @@ class Blankettests(TestCase):
     def test_admin_loads(self):
         self.assertEqual(Client().get('/admin/', follow=True).status_code, 200)
 
-    #def test_wsgi_loads(self):
-    #    app = TestApp(application)
-    #    self.assertEqual(app.get('/').status_int, 200)
-    # ASGI now

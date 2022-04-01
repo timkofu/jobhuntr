@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from daterange_filter.filter import DateRangeFilter
 
 from .models import (
     Continent,
@@ -31,6 +30,6 @@ class JobsDataAdmin(admin.ModelAdmin):
     list_filter = (
         'source__country',
         'source__site_name',
-        ('added_on', DateRangeFilter),
+        'added_on',
     )
     search_fields = ('title',)
