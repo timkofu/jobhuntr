@@ -1,7 +1,7 @@
 dist: bionic
 language: python
 python:
-  - "3.7.3"
+  - "3.10.3"
 services:
   - redis-server
 install:
