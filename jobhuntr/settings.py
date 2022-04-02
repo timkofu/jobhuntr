@@ -158,17 +158,5 @@ HAYSTACK_CONNECTIONS = {
     }
 }
 
-
-# Django Channels
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.getenv("REDIS_URL", "redis://localhost:6379")],
-        },
-        "ROUTING": "jobhuntr.routing.channel_routing",
-    },
-}
-
 # My Settings
 MAX_JOB_AGE = 14
