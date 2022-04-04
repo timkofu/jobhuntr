@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "channels",
     "haystack",
     "search",
 )
@@ -56,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "jobhuntr.wsgi.application"
+ASGI_APPLICATION = "jobhuntr.asgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
