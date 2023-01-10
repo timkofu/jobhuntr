@@ -18,7 +18,7 @@ django==3.2.12; python_version >= "3.6"
 feedparser==6.0.8; python_version >= "3.6"
 hiredis==2.0.0; python_version >= "3.6"
 hyperlink==21.0.0; python_full_version >= "3.6.7" and python_version >= "3.7"
-idna==3.3; python_full_version >= "3.6.7" and python_version >= "3.7"
+idna==3.4; python_full_version >= "3.6.7" and python_version >= "3.7"
 incremental==21.3.0; python_full_version >= "3.6.7" and python_version >= "3.6"
 lxml==4.8.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 msgpack-python==0.5.6
