@@ -1,7 +1,0 @@
-{
-  "name": "Jobhuntr",
-  "description": "A job search engine",
-  "repository": "https://github.com/timkofu/jobhuntr",
-  "logo": "https://raw.githubusercontent.com/timkofu/timkofu.github.io/master/fls/jh.jpg",
-  "keywords": ["python", "django", "searche ngine"]
-}

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Jobhuntr"
-version = "2022.04-01"
+version = "2023.01-10"
 description = "A job search engine."
 authors = ["Tim <tim@makobu.name>"]
 
@@ -9,21 +9,21 @@ python = "^3.10"
 beautifulsoup4 = "^4.10.0"
 lxml = "^4.8.0"
 brotlipy = "^0.7.0"
-dj-database-url = "^0.5.0"
+dj-database-url = "^1.2.0"
 django-redis = "^5.2.0"
 hiredis = "^2.0.0"
 feedparser = "^6.0.8"
 msgpack-python = "^0.5.6"
 psycopg2-binary = "^2.9.3"
 django-haystack = "^3.1.1"
-Django = "^3.0.0"
-channels = "^3.0.4"
+Django = "^4.1.5"
+channels = "^4.0.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.0.4"
 black = "^22.3.0"
 ipython = "^8.2.0"
 WebTest = "^3.0.0"
-coverage = "^6.3.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

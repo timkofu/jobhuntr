@@ -2,19 +2,20 @@ import os
 
 import dj_database_url
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+DEBUG = not os.getenv("PRODUCTION")
 
-if os.environ.get("PRODUCTION"):
-    DEBUG = False
+SECRET_KEY = (
+    os.getenv("SECRET_KEY")
+    if DEBUG
+    else "z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n"
+)
+
+if not DEBUG:
     ALLOWED_HOSTS = [
-        f"{os.getenv('APP_NAME')}.herokuapp.com",  # Name of your app
+        os.getenv("DOMAIN_NAME"),  # Name of your app
     ]
-    SECRET_KEY = os.getenv("SECRET_KEY")
-else:
-    DEBUG = True
-    SECRET_KEY = "z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n"
 
 
 INSTALLED_APPS = (
