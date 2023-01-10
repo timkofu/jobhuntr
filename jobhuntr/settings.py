@@ -8,7 +8,7 @@ DEBUG = not os.getenv("PRODUCTION")
 
 SECRET_KEY = (
     os.getenv("SECRET_KEY")
-    if DEBUG
+    if not DEBUG
     else "z0cgj)r!bwho6v3kuofewse7n$*(2(cs18&nzyqg(%+p-3u+7n"
 )
 
