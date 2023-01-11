@@ -18,7 +18,7 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
+    class Meta:  # type:ignore
         verbose_name_plural = "Countries"
 
 
@@ -31,7 +31,7 @@ class SourceLinks(models.Model):
     def __str__(self):
         return self.site_name
 
-    class Meta:
+    class Meta:  # type:ignore
         verbose_name_plural = "Source Links"
 
 
@@ -45,5 +45,5 @@ class JobsData(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:
+    class Meta:  # type:ignore
         verbose_name_plural = "Jobs Data"

@@ -1,11 +1,9 @@
 import os
 
-import django
-from channels.http import AsgiHandler  # type: ignore
-from channels.routing import ProtocolTypeRouter  # type: ignore
+from channels.routing import ProtocolTypeRouter
+from django.core.asgi import get_asgi_application
 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jobhuntr.settings")
-django.setup()
 
-application = ProtocolTypeRouter({"http": AsgiHandler()})
+application = ProtocolTypeRouter({"http": get_asgi_application()})

@@ -1,4 +1,5 @@
 import os
+from typing import cast
 
 import dj_database_url
 
@@ -19,13 +20,13 @@ if not DEBUG:
 
 
 INSTALLED_APPS = (
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "channels",
     "haystack",
     "search",
 )
@@ -77,7 +78,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 DATABASES = {
-    "default": dj_database_url.parse(os.getenv("DATABASE_URL"), conn_max_age=600)
+    "default": dj_database_url.parse(
+        cast(str, os.getenv("DATABASE_URL")), conn_max_age=600
+    )
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -122,7 +125,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static_global"),)
 
-ADMINS = (("Tim", "makobu.mwambiriro@gmail.com"),)
+ADMINS = (("Tim", "tim@makobu.name"),)
 
 
 # Email
