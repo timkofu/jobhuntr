@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/timkofu/jobhuntr/badge.svg?branch=master&service=github)](https://coveralls.io/github/timkofu/jobhuntr?branch=master)
+[![Coverage Status](https://coveralls.io/repos/timkofu/jobhuntr/badge.svg?branch=main&service=github)](https://coveralls.io/github/timkofu/jobhuntr?branch=master)
 ## Jobhuntr
 
 #### Source code for Jobhuntr, a job search engine.
